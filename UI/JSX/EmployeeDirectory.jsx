@@ -2,7 +2,7 @@ import React from 'react';
 
 import EmployeeSearch from "./EmployeeSearch.jsx";
 import EmployeeTable from "./EmployeeTable.jsx";
-
+import { Panel } from 'react-bootstrap';
 export default class EmployeeDirectory extends React.Component {
   constructor() {
     super();
@@ -45,22 +45,22 @@ export default class EmployeeDirectory extends React.Component {
           }
         }`;
       }
-  
+
       const response = await fetch('http://localhost:8000/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
       });
-  
+
       const result = await response.json();
       this.setState({ employees: result.data[this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : 'employeesListFilter'] });
-  
+
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
-  
-  
+
+
 
   handleFilterChange = (selectedFilter) => {
     this.setState({ selectedFilter });
@@ -82,28 +82,24 @@ export default class EmployeeDirectory extends React.Component {
       padding: '20px',
     };
 
-    const footerStyle = {
-      backgroundColor: '#003b49',
-      color: '#d0d3d4',
-      textAlign: 'center',
-      padding: '20px',
-      fontSize: '1rem',
-    };
-
     return (
-      <div>
-        <div>
-          <EmployeeSearch
-            onFilterChange={this.handleFilterChange}
-            onFilterClick={this.handleFilterClick}
-            selectedFilter={this.state.selectedFilter}
-          />
-          <EmployeeTable  style={containerStyle}
+      <React.Fragment>
+        <Panel>
+          <Panel.Heading>
+            <Panel.Title toggle>Filter</Panel.Title>
+          </Panel.Heading>
+          <Panel.Body collapsible>
+            <EmployeeSearch
+              onFilterChange={this.handleFilterChange}
+              onFilterClick={this.handleFilterClick}
+              selectedFilter={this.state.selectedFilter}
+            />
+          </Panel.Body>
+        </Panel>
+        <EmployeeTable style={containerStyle}
           allEmployees={this.state.employees}
           onEmployeeDeleted={this.handleEmployeeDeleted} />
-        </div>
-        <footer style={footerStyle}>&copy; Zaid Alam</footer>
-      </div>
+      </React.Fragment>
     );
   }
 }

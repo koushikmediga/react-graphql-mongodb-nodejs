@@ -1,51 +1,44 @@
 import React from 'react';
-import {Routes,Route, NavLink}  from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import { Label, NavItem, Nav, Navbar, Grid } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import NavLinks from './navigation.jsx';
-import { Label } from 'react-bootstrap';
 
-
-const navBarStyle = {
-    background: '#003b49',
-    padding: '10px',
-    marginTop: '2rem',
-    display: 'flex',
-    justifyContent: 'center'   
-  };
-  
-  const navLinkStyle = {
-    color: '#d0d3d4',
-  textDecoration: 'none',
-  margin: '0 10px',
-  };
-  
-
-function NavBar(){
-   return (
-    <nav style={navBarStyle}>
-        <NavLink to='/' style={navLinkStyle} >Home    |</NavLink>
-        <NavLink to='/EmployeeCreate' style={navLinkStyle} >Add Employee    |</NavLink>
-    </nav>
-   )
-}
-
+const footerStyle = {
+  backgroundColor: '#003b49',
+  color: '#d0d3d4',
+  textAlign: 'center',
+  padding: '20px',
+  fontSize: '1rem',
+};
 
 export default class Home extends React.Component {
-    render() {
-        const headerStyle = {
-            backgroundColor: '#003b49',
-            color: '#d0d3d4',
-            textAlign: 'center',
-            padding: '10px',
-          };
-  
-      return (
-           <div>
-                     <header style={headerStyle}>
-                       <h1> <Label>Employee Management System</Label></h1>
-                    </header>
-                    <NavBar />
-                    <NavLinks />
-           </div>
-      )
-    }
+  render() {
+    const headerStyle = {
+      backgroundColor: '#003b49',
+      color: '#d0d3d4',
+      textAlign: 'center',
+      padding: '10px',
+    };
+
+    return (
+      <Grid fluid>
+      <Navbar>
+        <Navbar.Header>
+          <Navbar.Brand>Employee Management System</Navbar.Brand>
+        </Navbar.Header>
+        <Nav>
+          <LinkContainer exact to="/">
+            <NavItem  >Home</NavItem>
+          </LinkContainer>
+          <LinkContainer exact to="/EmployeeCreate">
+            <NavItem  >Add Employee </NavItem>
+          </LinkContainer>
+        </Nav>
+      </Navbar>
+      <NavLinks />
+      <footer style={footerStyle}>&copy; Zaid Alam</footer>
+      </Grid>
+    )
   }
+}
