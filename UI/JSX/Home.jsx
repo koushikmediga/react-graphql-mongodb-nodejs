@@ -1,6 +1,7 @@
 import React from 'react';
 import {Routes,Route, NavLink}  from 'react-router-dom';
 import NavLinks from './navigation.jsx';
+import { Label } from 'react-bootstrap';
 
 
 const navBarStyle = {
@@ -40,7 +41,7 @@ export default class Home extends React.Component {
       return (
            <div>
                      <header style={headerStyle}>
-                        <h1>Employee Management System</h1>
+                       <h1> <Label>Employee Management System</Label></h1>
                     </header>
                     <NavBar />
                     <NavLinks />

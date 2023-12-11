@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button } from 'react-bootstrap';
 
 export default class EmployeeCreate extends React.Component {
     constructor() {
@@ -201,7 +201,7 @@ export default class EmployeeCreate extends React.Component {
             </select>
             {errors.employeeType && <p className="errorMsg" style={erroStyle}>{errors.employeeType}</p>}
 
-            <button style={buttonStyle} onClick={this.handleSubmit}>Create</button>
+            <Button style={buttonStyle} onClick={this.handleSubmit}>Create</Button>
           </form>
         </div>
       );

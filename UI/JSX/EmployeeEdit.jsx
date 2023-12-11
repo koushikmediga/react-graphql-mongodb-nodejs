@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -230,9 +231,9 @@ const EmployeeEdit = () => {
           <option value="Contract">Contract</option>
           <option value="Seasonal">Seasonal</option>
         </select>
-        <button type="submit" style={buttonStyle}>
+        <Button type="submit" style={buttonStyle}>
           Update
-        </button>
+        </Button>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Button } from 'react-bootstrap';
 export default class EmployeeRow extends React.Component {
 
   constructor(props) {
@@ -69,7 +69,7 @@ export default class EmployeeRow extends React.Component {
         <td style={rowStyle}>{this.props.rowEmployee.currentStatus}</td>
         <td style={rowStyle}>
           <a href={`#/EmployeeEdit/${employeeId}`} style={linkStyle}>Edit</a>
-          <button style={buttonStyle} onClick={this.handleDelete}>Delete</button>
+          <Button style={buttonStyle} onClick={this.handleDelete}>Delete</Button>
         </td>
       </tr>
     );
