@@ -3,6 +3,7 @@ import React from 'react';
 import EmployeeRow from "./EmployeeRow.jsx";
 
 export default class EmployeeTable extends React.Component {
+
     render() {
       const divStyle = {
         borderBottom: '1px solid black',

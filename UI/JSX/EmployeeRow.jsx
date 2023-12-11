@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import {
+  Button, Glyphicon, Tooltip, OverlayTrigger,
+  } from 'react-bootstrap';
 export default class EmployeeRow extends React.Component {
 
   constructor(props) {
@@ -69,7 +71,13 @@ export default class EmployeeRow extends React.Component {
         <td style={rowStyle}>{this.props.rowEmployee.currentStatus}</td>
         <td style={rowStyle}>
           <a href={`#/EmployeeEdit/${employeeId}`} style={linkStyle}>Edit</a>
-          <Button style={buttonStyle} onClick={this.handleDelete}>Delete</Button>
+         
+          <OverlayTrigger delayShow={500} overlay={<Tooltip id="close-tooltip" placement="top">Delete Employee</Tooltip>}>
+          <Button bsSize="xsmall" onClick={this.handleDelete}>
+          <Glyphicon glyph="trash" />
+          </Button>
+          </OverlayTrigger>
+         
         </td>
       </tr>
     );
