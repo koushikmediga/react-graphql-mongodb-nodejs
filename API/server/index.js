@@ -1,6 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { ConnectTodb, getEmployeesList,getEmployeesListFilter, addEmployee,deleteEmployee ,getEmployeeDetails,updateEmployee} = require('./db');
+const { ConnectTodb, getEmployeesList,getEmployeesListFilter, addEmployee,deleteEmployee ,getEmployeeDetails,updateEmployee, upcomingRetirements} = require('./db');
 const path = require('path');
 const fs=require('fs');
 const graphql = require("graphql");
@@ -16,7 +16,7 @@ const resolvers = {
     employeesList: getEmployees,
     employeesListFilter:employeesListFilterIndex,
     employeeById: getEmployeeDetailsIndex,
-    
+    upcomingRetirements: upcomingRetirementsIndex,
   },
   Mutation: {
     setAboutMessage,
@@ -73,6 +73,10 @@ async function deleteEmployeeById(_, { id }) {
   }
 }
 
+async function upcomingRetirementsIndex(_, { filter }) {
+  const employees = await upcomingRetirements(filter);
+  return employees;
+}
 
 const server = new ApolloServer({typeDefs:fs.readFileSync('./server/schema.graphql','utf-8'),resolvers});
 server.start().then(async () => {

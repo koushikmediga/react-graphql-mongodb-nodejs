@@ -27,12 +27,17 @@ input EmployeeFilterInput {
   employeeType: String
 }
 
+input EmployeeFilter {
+  employeeType: String
+}
+
 type Query {
   about: String!
   employeesList: [Employee!]!
   employeesListFilter(filter: EmployeeFilterInput): [Employee!]!
   employee(id: ID!): Employee!
   employeeById(id: ID!): Employee!
+  upcomingRetirements(filter: EmployeeFilter): [Employee]
 }
 
 type Mutation {

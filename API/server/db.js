@@ -77,6 +77,28 @@ async function deleteEmployee(id) {
   }
 }
 
+async function upcomingRetirements(filter) {
+  try {
+    const currentDate = new Date();
+    const employees = await Employee.find({});//get all the employees array
+    
+    const upcomingRetirements = employees.filter((employee) => {
+      const remainingYears = 65 - employee.age;
 
+      // Clone the date object to avoid modifying the original one
+      const retirementDate = new Date(employee.dateOfJoining);
+      //calculating the retirement date
+      retirementDate.setFullYear(retirementDate.getFullYear() + remainingYears);
+      
+      // for the retirement to be in next six months, the retirement date and current date difference should be 
+      // less than 180 days
+      return retirementDate - currentDate <= 180 * 24 * 60 * 60 * 1000 && retirementDate >= currentDate;
+    });
 
-module.exports = { ConnectTodb, getEmployeesList, getEmployeesListFilter, addEmployee, deleteEmployee, getEmployeeDetails, updateEmployee };
+    return upcomingRetirements != null ? upcomingRetirements : [];
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = { ConnectTodb, getEmployeesList, getEmployeesListFilter, addEmployee, deleteEmployee, getEmployeeDetails, updateEmployee, upcomingRetirements };

@@ -400,13 +400,15 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
     key: "loadData",
     value: function () {
       var _loadData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var query, response, result;
+        var query, response, result, dataKey;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
               if (this.state.selectedFilter === 'AllEmployee') {
                 query = "query {\n          employeesList {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }";
+              } else if (this.state.selectedFilter === 'UpcomingRetirements') {
+                query = "query {\n          upcomingRetirements {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }";
               } else {
                 query = "query {\n          employeesListFilter(filter: { employeeType: \"".concat(this.state.selectedFilter, "\" }) {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }");
               }
@@ -426,20 +428,21 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
               return response.json();
             case 7:
               result = _context.sent;
+              dataKey = this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : this.state.selectedFilter === 'UpcomingRetirements' ? 'upcomingRetirements' : 'employeesListFilter';
               this.setState({
-                employees: result.data[this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : 'employeesListFilter']
+                employees: result.data[dataKey]
               });
-              _context.next = 14;
+              _context.next = 15;
               break;
-            case 11:
-              _context.prev = 11;
+            case 12:
+              _context.prev = 12;
               _context.t0 = _context["catch"](0);
               console.error('Error fetching data:', _context.t0);
-            case 14:
+            case 15:
             case "end":
               return _context.stop();
           }
-        }, _callee, this, [[0, 11]]);
+        }, _callee, this, [[0, 12]]);
       }));
       function loadData() {
         return _loadData.apply(this, arguments);
@@ -924,7 +927,7 @@ var EmployeeRow = /*#__PURE__*/function (_React$Component) {
         },
         autohide: true,
         delay: 5000
-      }, "Cannot delete active employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+      }, "CANNOT DELETE EMPLOYEE STATUS ACTIVE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         style: rowStyle
       }, this.props.rowEmployee.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
         style: rowStyle
@@ -1064,7 +1067,9 @@ var EmployeeSearch = /*#__PURE__*/function (_React$Component) {
         value: "Contract"
       }, "Contract Employees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "Seasonal"
-      }, "Seasonal Employees")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "Seasonal Employees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "UpcomingRetirements"
+      }, "Upcoming Retirements")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         style: buttonStyle,
         type: "button",
         value: 'Filter',

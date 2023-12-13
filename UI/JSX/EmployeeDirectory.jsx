@@ -30,6 +30,20 @@ export default class EmployeeDirectory extends React.Component {
             currentStatus
           }
         }`;
+      } else if (this.state.selectedFilter === 'UpcomingRetirements') {
+        query = `query {
+          upcomingRetirements {
+            id
+            firstName
+            lastName
+            age
+            dateOfJoining
+            title
+            department
+            employeeType
+            currentStatus
+          }
+        }`;
       } else {
         query = `query {
           employeesListFilter(filter: { employeeType: "${this.state.selectedFilter}" }) {
@@ -53,8 +67,13 @@ export default class EmployeeDirectory extends React.Component {
       });
 
       const result = await response.json();
-      this.setState({ employees: result.data[this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : 'employeesListFilter'] });
+      const dataKey = this.state.selectedFilter === 'AllEmployee'
+        ? 'employeesList'
+        : this.state.selectedFilter === 'UpcomingRetirements'
+          ? 'upcomingRetirements'
+          : 'employeesListFilter';
 
+      this.setState({ employees: result.data[dataKey] });
     } catch (error) {
       console.error('Error fetching data:', error);
     }

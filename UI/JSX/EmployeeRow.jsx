@@ -89,7 +89,7 @@ export default class EmployeeRow extends React.Component {
           autohide
           delay={5000} 
         >
-          Cannot delete active employee
+          CANNOT DELETE EMPLOYEE STATUS ACTIVE
         </Toast>
 
         <tr>
