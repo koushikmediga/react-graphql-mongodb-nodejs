@@ -16,6 +16,29 @@ const EmployeeEdit = () => {
     employeeType: '',
   });
 
+  useEffect(() => {
+    const currentDate = new Date();
+    const remainingYears = 65 - employeeData.age;
+
+    const retirementDate = new Date(employeeData.dateOfJoining);
+    //calculating the retirement date
+    retirementDate.setFullYear(retirementDate.getFullYear() + remainingYears);
+
+    if (retirementDate >= currentDate) {
+      const timeDifference = retirementDate - currentDate;
+      const yearsRemaining = Math.floor(timeDifference / (365.25 * 24 * 60 * 60 * 1000));
+      const monthsRemaining = Math.floor((timeDifference % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
+      const daysRemaining = Math.floor((timeDifference % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+
+      const retirementstring = `Years : ${yearsRemaining}, Months: ${monthsRemaining}, Days : ${daysRemaining} left for retirement`;
+      setRetirement(retirementstring);
+    }else setRetirement('already retired')
+
+    
+  }, [employeeData])
+
+  const [retirement, setRetirement] = useState();
+
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
@@ -113,9 +136,7 @@ const EmployeeEdit = () => {
 
   const createStyle = {
     marginTop: '1%',
-    borderBottom: '1px solid black',
-    display: 'flex',
-    justifyContent: 'center'
+    borderBottom: '1px solid black'
   };
 
   const headingStyle = {
@@ -156,15 +177,16 @@ const EmployeeEdit = () => {
   };
 
   return (
-    <Row style={createStyle}>
+    <div style={createStyle}>
       <Toast
         showing={showToast}
         bsStyle="success"
-        onDismiss={() =>setShowToast(false)}
+        onDismiss={() => setShowToast(false)}
       >Employee updated successfully</Toast>
 
-      <Col><h2 style={headingStyle}>Update Employee</h2></Col>
+      <h2 style={headingStyle}>Update Employee</h2>
       <form style={formStyle} name="UpdateEmployee" onSubmit={handleSubmit}>
+        <p>{retirement}</p>
         <input
           type="text"
           name="firstName"
@@ -247,7 +269,7 @@ const EmployeeEdit = () => {
           Update
         </Button>
       </form>
-    </Row>
+    </div>
   );
 };
 

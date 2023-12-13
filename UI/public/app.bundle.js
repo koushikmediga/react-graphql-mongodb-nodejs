@@ -528,9 +528,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Button.js");
 /* harmony import */ var _Toast_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Toast.jsx */ "./JSX/Toast.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -567,10 +565,29 @@ var EmployeeEdit = function EmployeeEdit() {
     _useState2 = _slicedToArray(_useState, 2),
     employeeData = _useState2[0],
     setEmployeeData = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var currentDate = new Date();
+    var remainingYears = 65 - employeeData.age;
+    var retirementDate = new Date(employeeData.dateOfJoining);
+    //calculating the retirement date
+    retirementDate.setFullYear(retirementDate.getFullYear() + remainingYears);
+    if (retirementDate >= currentDate) {
+      var timeDifference = retirementDate - currentDate;
+      var yearsRemaining = Math.floor(timeDifference / (365.25 * 24 * 60 * 60 * 1000));
+      var monthsRemaining = Math.floor(timeDifference % (365.25 * 24 * 60 * 60 * 1000) / (30.44 * 24 * 60 * 60 * 1000));
+      var daysRemaining = Math.floor(timeDifference % (30.44 * 24 * 60 * 60 * 1000) / (24 * 60 * 60 * 1000));
+      var retirementstring = "Years : ".concat(yearsRemaining, ", Months: ").concat(monthsRemaining, ", Days : ").concat(daysRemaining, " left for retirement");
+      setRetirement(retirementstring);
+    } else setRetirement('already retired');
+  }, [employeeData]);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState4 = _slicedToArray(_useState3, 2),
-    showToast = _useState4[0],
-    setShowToast = _useState4[1];
+    retirement = _useState4[0],
+    setRetirement = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showToast = _useState6[0],
+    setShowToast = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -677,9 +694,7 @@ var EmployeeEdit = function EmployeeEdit() {
   }();
   var createStyle = {
     marginTop: '1%',
-    borderBottom: '1px solid black',
-    display: 'flex',
-    justifyContent: 'center'
+    borderBottom: '1px solid black'
   };
   var headingStyle = {
     color: '#003b49',
@@ -713,7 +728,7 @@ var EmployeeEdit = function EmployeeEdit() {
     marginTop: '-15px',
     fontSize: '1rem'
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     style: createStyle
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Toast_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     showing: showToast,
@@ -721,13 +736,13 @@ var EmployeeEdit = function EmployeeEdit() {
     onDismiss: function onDismiss() {
       return setShowToast(false);
     }
-  }, "Employee updated successfully"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+  }, "Employee updated successfully"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     style: headingStyle
-  }, "Update Employee")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+  }, "Update Employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     style: formStyle,
     name: "UpdateEmployee",
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, retirement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
     name: "firstName",
     placeholder: "First Name",
@@ -807,7 +822,7 @@ var EmployeeEdit = function EmployeeEdit() {
     value: "Contract"
   }, "Contract"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
     value: "Seasonal"
-  }, "Seasonal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, "Seasonal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     type: "submit",
     style: buttonStyle
   }, "Update")));
