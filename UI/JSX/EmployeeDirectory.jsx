@@ -2,11 +2,11 @@ import React from 'react';
 
 import EmployeeSearch from "./EmployeeSearch.jsx";
 import EmployeeTable from "./EmployeeTable.jsx";
-import { Panel } from 'react-bootstrap';
+import { Panel, Tabs, Tab } from 'react-bootstrap';
 export default class EmployeeDirectory extends React.Component {
   constructor() {
     super();
-    this.state = { employees: [], selectedFilter: 'AllEmployee' };
+    this.state = { employees: [], selectedFilter: 'AllEmployee', retirementEmployees: [] };
   }
 
   componentDidMount() {
@@ -73,7 +73,36 @@ export default class EmployeeDirectory extends React.Component {
           ? 'upcomingRetirements'
           : 'employeesListFilter';
 
-      this.setState({ employees: result.data[dataKey] });
+      this.setState({ ...this.state, employees: result.data[dataKey] });
+
+      const upcomingRetirementsQuery = `query {
+        upcomingRetirements {
+          id
+          firstName
+          lastName
+          age
+          dateOfJoining
+          title
+          department
+          employeeType
+          currentStatus
+        }
+      }`;
+
+      const upcomingRetirementsResponse = await fetch('http://localhost:8000/graphql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: upcomingRetirementsQuery }),
+      });
+
+      const upcomingRetirementsResult = await upcomingRetirementsResponse.json();
+      const upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements;
+
+      // Set the state with both sets of data
+      this.setState({
+        ...this.state,
+        retirementEmployees: upcomingRetirements,
+      });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -115,9 +144,18 @@ export default class EmployeeDirectory extends React.Component {
             />
           </Panel.Body>
         </Panel>
-        <EmployeeTable style={containerStyle}
-          allEmployees={this.state.employees}
-          onEmployeeDeleted={this.handleEmployeeDeleted} />
+        <Tabs defaultActiveKey="allEmployees">
+          <Tab eventKey="allEmployees" title="All Employees">
+            <EmployeeTable style={containerStyle}
+              allEmployees={this.state.employees}
+              onEmployeeDeleted={this.handleEmployeeDeleted} />
+          </Tab>
+          <Tab eventKey="retirementEmployees" title="Upcoming Retirements">
+            <EmployeeTable style={containerStyle}
+              allEmployees={this.state.retirementEmployees}
+              onEmployeeDeleted={this.handleEmployeeDeleted} />
+          </Tab>
+        </Tabs>
       </React.Fragment>
     );
   }

@@ -11,6 +11,7 @@ export default class EmployeeTable extends React.Component {
       borderBottom: '1px solid black',
       paddingBottom: '10px',
     };
+
     const headingStyle = {
       color: '#003b49',
       marginLeft: '8px',
@@ -35,7 +36,7 @@ export default class EmployeeTable extends React.Component {
 
     return (
       <div style={divStyle}>
-        <h2 style={headingStyle}>List of All Employees</h2>
+        <h2 style={headingStyle}>Employees</h2>
         <Table bordered condensed hover responsive>
           <thead>
             <tr>
