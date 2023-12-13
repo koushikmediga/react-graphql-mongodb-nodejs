@@ -1,18 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
-  Button, Glyphicon, Tooltip, OverlayTrigger,
-  } from 'react-bootstrap';
+  Button, Glyphicon, Tooltip, OverlayTrigger
+} from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import Toast from './Toast.jsx';
 export default class EmployeeRow extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      showToast: false,
+      showToastWarning: false,
+    };
+
     this.handleDelete = this.handleDelete.bind(this);
   }
 
- async handleDelete() {
-    const id=this.props.rowEmployee.id;
-    
+  async handleDelete() {
+    const id = this.props.rowEmployee.id;
+
     const query = `
       mutation {
         deleteEmployee(id: "${id}")
@@ -27,9 +33,13 @@ export default class EmployeeRow extends React.Component {
     const result = await response.json();
 
     if (result.data.deleteEmployee) {
-      this.props.onEmployeeDeleted(id);
-      window.alert('Employee deleted successfully');
+      this.setState({ showToast: true, showToastWarning: false });
+
+      setTimeout(() => {
+        this.props.onEmployeeDeleted(id);
+      }, 1000);
     } else {
+      this.setState({ showToast: false, showToastWarning: true });
       console.error('Error deleting employee');
     }
   }
@@ -56,30 +66,58 @@ export default class EmployeeRow extends React.Component {
     const linkStyle = {
       color: '#3498db',
       textDecoration: 'none',
-      marginRight: '1rem'
+      marginRight: '1rem',
+      cursor: 'pointer'
     };
 
     return (
-      <tr>
-        <td style={rowStyle}>{this.props.rowEmployee.firstName}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.lastName}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.age}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.dateOfJoining}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.title}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.department}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.employeeType}</td>
-        <td style={rowStyle}>{this.props.rowEmployee.currentStatus}</td>
-        <td style={rowStyle}>
-          <a href={`#/EmployeeEdit/${employeeId}`} style={linkStyle}>Edit</a>
-         
-          <OverlayTrigger delayShow={500} overlay={<Tooltip id="close-tooltip" placement="top">Delete Employee</Tooltip>}>
-          <Button bsSize="xsmall" onClick={this.handleDelete}>
-          <Glyphicon glyph="trash" />
-          </Button>
-          </OverlayTrigger>
-         
-        </td>
-      </tr>
+      <>
+        <Toast
+          showing={this.state.showToast}
+          bsStyle="success"
+          onDismiss={() =>  this.setState({ showToast: false }) }
+          autohide
+          delay={5000} 
+        >
+          Employee deleted successfully
+        </Toast>
+
+        <Toast
+          showing={this.state.showToastWarning}
+          bsStyle="warning"
+          onDismiss={() => this.setState({ showToastWarning: false })}
+          autohide
+          delay={5000} 
+        >
+          Cannot delete active employee
+        </Toast>
+
+        <tr>
+          <td style={rowStyle}>{this.props.rowEmployee.firstName}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.lastName}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.age}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.dateOfJoining}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.title}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.department}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.employeeType}</td>
+          <td style={rowStyle}>{this.props.rowEmployee.currentStatus == 1 ? 'Working' : 'Retired'}</td>
+          <td style={rowStyle}>
+
+            <OverlayTrigger delayShow={500} overlay={<Tooltip id="close-tooltip" placement="top">Edit Employee</Tooltip>}>
+              <LinkContainer to={`/EmployeeEdit/${employeeId}`} style={linkStyle}>
+                <Glyphicon glyph="edit" />
+              </LinkContainer>
+            </OverlayTrigger>
+
+            <OverlayTrigger delayShow={500} overlay={<Tooltip id="close-tooltip" placement="top">Delete Employee</Tooltip>}>
+              <Button bsSize="xsmall" onClick={this.handleDelete}>
+                <Glyphicon glyph="trash" />
+              </Button>
+            </OverlayTrigger>
+
+          </td>
+        </tr>
+      </>
     );
   }
 }

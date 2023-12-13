@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
+import Toast from './Toast.jsx';
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -14,6 +15,8 @@ const EmployeeEdit = () => {
     department: '',
     employeeType: '',
   });
+
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,8 +100,9 @@ const EmployeeEdit = () => {
       const result = await response.json();
 
       if (result.data && result.data.updateEmployee) {
-        window.alert('Employee updated successfully');
-        window.location.href = '/';
+        setShowToast(true)
+        // window.alert('Employee updated successfully');
+        // window.location.href = '/';
       } else {
         console.error('Error while updating employee');
       }
@@ -110,6 +114,8 @@ const EmployeeEdit = () => {
   const createStyle = {
     marginTop: '1%',
     borderBottom: '1px solid black',
+    display: 'flex',
+    justifyContent: 'center'
   };
 
   const headingStyle = {
@@ -150,8 +156,14 @@ const EmployeeEdit = () => {
   };
 
   return (
-    <div style={createStyle}>
-      <h2 style={headingStyle}>Update Employee</h2>
+    <Row style={createStyle}>
+      <Toast
+        showing={showToast}
+        bsStyle="success"
+        onDismiss={() =>setShowToast(false)}
+      >Employee updated successfully</Toast>
+
+      <Col><h2 style={headingStyle}>Update Employee</h2></Col>
       <form style={formStyle} name="UpdateEmployee" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -235,7 +247,7 @@ const EmployeeEdit = () => {
           Update
         </Button>
       </form>
-    </div>
+    </Row>
   );
 };
 

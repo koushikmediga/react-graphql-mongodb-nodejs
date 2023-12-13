@@ -7649,6 +7649,95 @@ module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/es/Alert.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/Alert.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+/* harmony import */ var _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/StyleConfig */ "./node_modules/react-bootstrap/es/utils/StyleConfig.js");
+/* harmony import */ var _CloseButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CloseButton */ "./node_modules/react-bootstrap/es/CloseButton.js");
+
+
+
+
+
+
+
+
+
+
+var propTypes = {
+  onDismiss: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func),
+  closeLabel: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string)
+};
+var defaultProps = {
+  closeLabel: 'Close alert'
+};
+
+var Alert =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__["default"])(Alert, _React$Component);
+
+  function Alert() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Alert.prototype;
+
+  _proto.render = function render() {
+    var _extends2;
+
+    var _this$props = this.props,
+        onDismiss = _this$props.onDismiss,
+        closeLabel = _this$props.closeLabel,
+        className = _this$props.className,
+        children = _this$props.children,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(_this$props, ["onDismiss", "closeLabel", "className", "children"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var dismissable = !!onDismiss;
+
+    var classes = (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.getClassSet)(bsProps), (_extends2 = {}, _extends2[(0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.prefix)(bsProps, 'dismissable')] = dismissable, _extends2));
+
+    return react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, elementProps, {
+      role: "alert",
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, classes)
+    }), dismissable && react__WEBPACK_IMPORTED_MODULE_5__.createElement(_CloseButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      onClick: onDismiss,
+      label: closeLabel
+    }), children);
+  };
+
+  return Alert;
+}(react__WEBPACK_IMPORTED_MODULE_5__.Component);
+
+Alert.propTypes = propTypes;
+Alert.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.bsStyles)(_babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0___default()(_utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__.State), _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__.State.INFO, (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.bsClass)('alert', Alert)));
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/es/Button.js":
 /*!***************************************************!*\
   !*** ./node_modules/react-bootstrap/es/Button.js ***!
@@ -7766,6 +7855,346 @@ function (_React$Component) {
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_9__.bsClass)('btn', (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_9__.bsSizes)([_utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Size.LARGE, _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Size.SMALL, _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Size.XSMALL], (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_9__.bsStyles)(_babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0___default()(_utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.State).concat([_utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Style.DEFAULT, _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Style.PRIMARY, _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Style.LINK]), _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_10__.Style.DEFAULT, Button))));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/es/CloseButton.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/CloseButton.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+var propTypes = {
+  label: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string).isRequired,
+  onClick: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+};
+var defaultProps = {
+  label: 'Close'
+};
+
+var CloseButton =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(CloseButton, _React$Component);
+
+  function CloseButton() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = CloseButton.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        label = _this$props.label,
+        onClick = _this$props.onClick;
+    return react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+      type: "button",
+      className: "close",
+      onClick: onClick
+    }, react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+      "aria-hidden": "true"
+    }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+      className: "sr-only"
+    }, label));
+  };
+
+  return CloseButton;
+}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+
+CloseButton.propTypes = propTypes;
+CloseButton.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CloseButton);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/es/Col.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/Col.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types-extra/lib/elementType */ "./node_modules/prop-types-extra/lib/elementType.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+/* harmony import */ var _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/StyleConfig */ "./node_modules/react-bootstrap/es/utils/StyleConfig.js");
+
+
+
+
+
+
+
+
+
+var propTypes = {
+  componentClass: (prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default()),
+
+  /**
+   * The number of columns you wish to span
+   *
+   * for Extra small devices Phones (<768px)
+   *
+   * class-prefix `col-xs-`
+   */
+  xs: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * The number of columns you wish to span
+   *
+   * for Small devices Tablets (≥768px)
+   *
+   * class-prefix `col-sm-`
+   */
+  sm: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * The number of columns you wish to span
+   *
+   * for Medium devices Desktops (≥992px)
+   *
+   * class-prefix `col-md-`
+   */
+  md: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * The number of columns you wish to span
+   *
+   * for Large devices Desktops (≥1200px)
+   *
+   * class-prefix `col-lg-`
+   */
+  lg: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Hide column
+   *
+   * on Extra small devices Phones
+   *
+   * adds class `hidden-xs`
+   */
+  xsHidden: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+
+  /**
+   * Hide column
+   *
+   * on Small devices Tablets
+   *
+   * adds class `hidden-sm`
+   */
+  smHidden: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+
+  /**
+   * Hide column
+   *
+   * on Medium devices Desktops
+   *
+   * adds class `hidden-md`
+   */
+  mdHidden: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+
+  /**
+   * Hide column
+   *
+   * on Large devices Desktops
+   *
+   * adds class `hidden-lg`
+   */
+  lgHidden: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+
+  /**
+   * Move columns to the right
+   *
+   * for Extra small devices Phones
+   *
+   * class-prefix `col-xs-offset-`
+   */
+  xsOffset: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Move columns to the right
+   *
+   * for Small devices Tablets
+   *
+   * class-prefix `col-sm-offset-`
+   */
+  smOffset: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Move columns to the right
+   *
+   * for Medium devices Desktops
+   *
+   * class-prefix `col-md-offset-`
+   */
+  mdOffset: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Move columns to the right
+   *
+   * for Large devices Desktops
+   *
+   * class-prefix `col-lg-offset-`
+   */
+  lgOffset: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the right
+   *
+   * for Extra small devices Phones
+   *
+   * class-prefix `col-xs-push-`
+   */
+  xsPush: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the right
+   *
+   * for Small devices Tablets
+   *
+   * class-prefix `col-sm-push-`
+   */
+  smPush: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the right
+   *
+   * for Medium devices Desktops
+   *
+   * class-prefix `col-md-push-`
+   */
+  mdPush: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the right
+   *
+   * for Large devices Desktops
+   *
+   * class-prefix `col-lg-push-`
+   */
+  lgPush: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the left
+   *
+   * for Extra small devices Phones
+   *
+   * class-prefix `col-xs-pull-`
+   */
+  xsPull: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the left
+   *
+   * for Small devices Tablets
+   *
+   * class-prefix `col-sm-pull-`
+   */
+  smPull: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the left
+   *
+   * for Medium devices Desktops
+   *
+   * class-prefix `col-md-pull-`
+   */
+  mdPull: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+
+  /**
+   * Change the order of grid columns to the left
+   *
+   * for Large devices Desktops
+   *
+   * class-prefix `col-lg-pull-`
+   */
+  lgPull: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number)
+};
+var defaultProps = {
+  componentClass: 'div'
+};
+
+var Col =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Col, _React$Component);
+
+  function Col() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Col.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.componentClass,
+        className = _this$props.className,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["componentClass", "className"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var classes = [];
+    _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_8__.DEVICE_SIZES.forEach(function (size) {
+      function popProp(propSuffix, modifier) {
+        var propName = "" + size + propSuffix;
+        var propValue = elementProps[propName];
+
+        if (propValue != null) {
+          classes.push((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.prefix)(bsProps, "" + size + modifier + "-" + propValue));
+        }
+
+        delete elementProps[propName];
+      }
+
+      popProp('', '');
+      popProp('Offset', '-offset');
+      popProp('Push', '-push');
+      popProp('Pull', '-pull');
+      var hiddenPropName = size + "Hidden";
+
+      if (elementProps[hiddenPropName]) {
+        classes.push("hidden-" + size);
+      }
+
+      delete elementProps[hiddenPropName];
+    });
+    return react__WEBPACK_IMPORTED_MODULE_4__.createElement(Component, (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, elementProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+  };
+
+  return Col;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+Col.propTypes = propTypes;
+Col.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.bsClass)('col', Col));
 
 /***/ }),
 
@@ -10652,6 +11081,76 @@ PanelToggle.contextTypes = contextTypes;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/es/Row.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/Row.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types-extra/lib/elementType */ "./node_modules/prop-types-extra/lib/elementType.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+
+
+
+
+
+
+
+var propTypes = {
+  componentClass: (prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default())
+};
+var defaultProps = {
+  componentClass: 'div'
+};
+
+var Row =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Row, _React$Component);
+
+  function Row() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Row.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.componentClass,
+        className = _this$props.className,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["componentClass", "className"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var classes = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.getClassSet)(bsProps);
+    return react__WEBPACK_IMPORTED_MODULE_4__.createElement(Component, (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, elementProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+  };
+
+  return Row;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+Row.propTypes = propTypes;
+Row.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.bsClass)('row', Row));
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/es/SafeAnchor.js":
 /*!*******************************************************!*\
   !*** ./node_modules/react-bootstrap/es/SafeAnchor.js ***!
@@ -10786,6 +11285,99 @@ function (_React$Component) {
 SafeAnchor.propTypes = propTypes;
 SafeAnchor.defaultProps = defaultProps;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SafeAnchor);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/es/Table.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/Table.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+
+
+
+
+
+
+
+var propTypes = {
+  striped: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  bordered: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  condensed: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  hover: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+  responsive: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool)
+};
+var defaultProps = {
+  bordered: false,
+  condensed: false,
+  hover: false,
+  responsive: false,
+  striped: false
+};
+
+var Table =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Table, _React$Component);
+
+  function Table() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Table.prototype;
+
+  _proto.render = function render() {
+    var _extends2;
+
+    var _this$props = this.props,
+        striped = _this$props.striped,
+        bordered = _this$props.bordered,
+        condensed = _this$props.condensed,
+        hover = _this$props.hover,
+        responsive = _this$props.responsive,
+        className = _this$props.className,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["striped", "bordered", "condensed", "hover", "responsive", "className"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var classes = (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.getClassSet)(bsProps), (_extends2 = {}, _extends2[(0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.prefix)(bsProps, 'striped')] = striped, _extends2[(0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.prefix)(bsProps, 'bordered')] = bordered, _extends2[(0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.prefix)(bsProps, 'condensed')] = condensed, _extends2[(0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.prefix)(bsProps, 'hover')] = hover, _extends2));
+
+    var table = react__WEBPACK_IMPORTED_MODULE_4__.createElement("table", (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, elementProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+
+    if (responsive) {
+      return react__WEBPACK_IMPORTED_MODULE_4__.createElement("div", {
+        className: (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.prefix)(bsProps, 'responsive')
+      }, table);
+    }
+
+    return table;
+  };
+
+  return Table;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+Table.propTypes = propTypes;
+Table.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.bsClass)('table', Table));
 
 /***/ }),
 

@@ -44,7 +44,7 @@ async function addEmployee(emp) {
 
 async function getEmployeeDetails(id) {
   try {
-    const employee = await Employee.findOne({_id:id});
+    const employee = await Employee.findOne({ _id: id });
     return employee;
   } catch (error) {
     console.error(error);
@@ -53,7 +53,7 @@ async function getEmployeeDetails(id) {
 
 async function updateEmployee(id, input) {
   try {
-    const updatedEmployee = await Employee.findOneAndUpdate({_id:id}, input, { new: true });
+    const updatedEmployee = await Employee.findOneAndUpdate({ _id: id }, input, { new: true });
     return updatedEmployee;
   } catch (error) {
     console.error('Error updating employee:', error);
@@ -64,8 +64,13 @@ async function updateEmployee(id, input) {
 
 async function deleteEmployee(id) {
   try {
-    const result = await Employee.findByIdAndDelete(id);
-    return result !== null;
+    const result = await Employee.findById(id);
+
+    if (result.currentStatus == '0') {
+      await Employee.deleteOne(result);
+      return true;
+    }
+    else return false
   } catch (error) {
     console.error(error);
     return false;
@@ -74,4 +79,4 @@ async function deleteEmployee(id) {
 
 
 
-module.exports = { ConnectTodb, getEmployeesList, getEmployeesListFilter, addEmployee,deleteEmployee, getEmployeeDetails,updateEmployee};
+module.exports = { ConnectTodb, getEmployeesList, getEmployeesListFilter, addEmployee, deleteEmployee, getEmployeeDetails, updateEmployee };
