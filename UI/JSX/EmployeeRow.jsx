@@ -53,16 +53,6 @@ export default class EmployeeRow extends React.Component {
       textAlign: 'left',
     };
 
-    const buttonStyle = {
-      padding: '5px 10px',
-      marginRight: '5px',
-      backgroundColor: '#e74c3c',
-      color: '#fff',
-      border: 'none',
-      borderRadius: '3px',
-      cursor: 'pointer',
-    };
-
     const linkStyle = {
       color: '#3498db',
       textDecoration: 'none',
@@ -71,7 +61,7 @@ export default class EmployeeRow extends React.Component {
     };
 
     return (
-      <>
+      <React.Fragment>
         <Toast
           showing={this.state.showToast}
           bsStyle="success"
@@ -117,7 +107,7 @@ export default class EmployeeRow extends React.Component {
 
           </td>
         </tr>
-      </>
+      </React.Fragment>
     );
   }
 }

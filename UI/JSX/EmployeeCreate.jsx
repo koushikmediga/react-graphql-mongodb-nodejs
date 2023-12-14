@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Row, Col, Form, FormControl } from 'react-bootstrap';
-
+import Toast from './Toast.jsx';
 export default class EmployeeCreate extends React.Component {
   constructor() {
     super();
@@ -13,6 +13,7 @@ export default class EmployeeCreate extends React.Component {
       department: '',
       employeeType: '',
       errors: {},
+      showToast: false
     };
   }
 
@@ -106,7 +107,7 @@ export default class EmployeeCreate extends React.Component {
       body: JSON.stringify({ query: query, variables: { employee: emp } }),
     });
     if (response) {
-      window.alert('Employee created successfully');
+      this.setState({ ...this.state, showToast: true })
     }
 
   }
@@ -125,6 +126,8 @@ export default class EmployeeCreate extends React.Component {
     const formStyle = {
       maxWidth: '500px',
       paddingBottom: '20px',
+      justifyContent: 'center',
+      margin: '0 auto'
     };
     const inputStyle = {
       width: '100%',
@@ -153,9 +156,20 @@ export default class EmployeeCreate extends React.Component {
     }
 
     return (
-      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <h3 style={headingStyle}>Add Employee</h3>
-        <Col lg={8}>
+      <Row >
+        <Toast
+          showing={this.state.showToast}
+          bsStyle="success"
+          onDismiss={() => this.setState({ ...this.state, showToast: false })}
+          autohide
+          delay={5000}
+        >
+          Employee Created Successfully
+        </Toast>
+        <Col lg={12}> <h3 style={headingStyle}>Add Employee</h3></Col>
+        <Col lg={12} >
+
+
           <Form style={formStyle} name="AddEmployee" onSubmit={this.handleSubmit}>
 
             <FormControl type="text" name="firstName" placeholder="First Name" style={inputStyle}
@@ -207,6 +221,8 @@ export default class EmployeeCreate extends React.Component {
             <Button style={buttonStyle} onClick={this.handleSubmit}>Create</Button>
           </Form>
         </Col>
+
+
       </Row>
     );
   }

@@ -124,8 +124,6 @@ const EmployeeEdit = () => {
 
       if (result.data && result.data.updateEmployee) {
         setShowToast(true)
-        // window.alert('Employee updated successfully');
-        // window.location.href = '/';
       } else {
         console.error('Error while updating employee');
       }
