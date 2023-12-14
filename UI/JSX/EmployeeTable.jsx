@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Table,
+  Table, Row, Col
 } from 'react-bootstrap';
 import EmployeeRow from "./EmployeeRow.jsx";
 
@@ -17,13 +17,6 @@ export default class EmployeeTable extends React.Component {
       marginLeft: '8px',
     }
 
-    const tableStyle = {
-      borderCollapse: 'collapse',
-      width: '80%',
-      margin: '20px',
-      border: '1px solid #d0d3d4',
-    };
-
     const headerStyle = {
       border: '1px solid #d0d3d4',
       padding: '10px',
@@ -35,8 +28,8 @@ export default class EmployeeTable extends React.Component {
     const employees = this.props.allEmployees.map((item) => <EmployeeRow key={item.id} rowEmployee={item} onEmployeeDeleted={this.props.onEmployeeDeleted} />);
 
     return (
-      <div style={divStyle}>
-        <h2 style={headingStyle}>Employees</h2>
+      <React.Fragment>
+        <h3 style={headingStyle}>Employees</h3>
         <Table bordered condensed hover responsive>
           <thead>
             <tr>
@@ -53,7 +46,7 @@ export default class EmployeeTable extends React.Component {
           </thead>
           <tbody>{employees}</tbody>
         </Table>
-      </div>
+      </React.Fragment>
     );
   }
 }

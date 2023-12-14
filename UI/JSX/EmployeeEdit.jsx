@@ -183,12 +183,11 @@ const EmployeeEdit = () => {
       >Employee updated successfully</Toast>
       <Row style={createStyle} lg={12}>
 
-        <Col> <h2 style={headingStyle}>Update Employee</h2></Col>
+        <Col> <h3 style={headingStyle}>Update Employee</h3></Col>
         <Col lg={12}>
           <Form style={formStyle} name="UpdateEmployee" onSubmit={handleSubmit}>
             <h3 style={{ color: '#FFDF00' }}>{retirement}</h3>
-            {/* <FormControl componentClass="select" name="title" value={this.props.selectedFilter} onChange={this.handleChange}> */}
-
+            
             <FormControl
               componentClass="input"
               type="text"
