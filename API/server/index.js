@@ -1,6 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { ConnectTodb, getEmployeesList,getEmployeesListFilter, addEmployee,deleteEmployee ,getEmployeeDetails,updateEmployee, upcomingRetirements} = require('./db');
+const { ConnectTodb, getEmployeesList,getEmployeesListFilter, addEmployee,deleteEmployee ,getEmployeeDetails,updateEmployee,
+   upcomingRetirements, upcomingRetirementsWithFilter} = require('./db');
 const path = require('path');
 const fs=require('fs');
 const graphql = require("graphql");
@@ -17,6 +18,7 @@ const resolvers = {
     employeesListFilter:employeesListFilterIndex,
     employeeById: getEmployeeDetailsIndex,
     upcomingRetirements: upcomingRetirementsIndex,
+    upcomingRetirementsFilter: upcomingRetirementsFilterIndex
   },
   Mutation: {
     setAboutMessage,
@@ -75,6 +77,11 @@ async function deleteEmployeeById(_, { id }) {
 
 async function upcomingRetirementsIndex(_, { filter }) {
   const employees = await upcomingRetirements(filter);
+  return employees;
+}
+
+async function upcomingRetirementsFilterIndex(_, {filter}) {
+  const employees = await upcomingRetirementsWithFilter(filter);
   return employees;
 }
 

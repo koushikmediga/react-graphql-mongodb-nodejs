@@ -153,7 +153,7 @@ export default class EmployeeCreate extends React.Component {
     }
 
     return (
-      <Row  >
+      <Row  style={{ display:'flex', justifyContent:'space-around'}}>
          <h3 style={headingStyle}>Add Employee</h3>
         <Col >
           <form style={formStyle} name="AddEmployee" onSubmit={this.handleSubmit}>

@@ -14,10 +14,11 @@ export default class EmployeeDirectory extends React.Component {
   }
 
   async loadData() {
-    let query;
+    let employeeListQuery;
+    let upcomingRetirementsQuery;
     try {
       if (this.state.selectedFilter === 'AllEmployee') {
-        query = `query {
+        employeeListQuery = ` {
           employeesList {
             id
             firstName
@@ -30,8 +31,7 @@ export default class EmployeeDirectory extends React.Component {
             currentStatus
           }
         }`;
-      } else if (this.state.selectedFilter === 'UpcomingRetirements') {
-        query = `query {
+        upcomingRetirementsQuery = ` {
           upcomingRetirements {
             id
             firstName
@@ -45,8 +45,21 @@ export default class EmployeeDirectory extends React.Component {
           }
         }`;
       } else {
-        query = `query {
+        employeeListQuery = ` {
           employeesListFilter(filter: { employeeType: "${this.state.selectedFilter}" }) {
+            id
+            firstName
+            lastName
+            age
+            dateOfJoining
+            title
+            department
+            employeeType
+            currentStatus
+          }
+        }`;
+        upcomingRetirementsQuery = ` {
+          upcomingRetirementsFilter(filter: { employeeType: "${this.state.selectedFilter}" }) {
             id
             firstName
             lastName
@@ -63,51 +76,36 @@ export default class EmployeeDirectory extends React.Component {
       const response = await fetch('http://localhost:8000/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query : employeeListQuery }),
       });
 
       const result = await response.json();
+      console.log(result, " is complete list")
       const dataKey = this.state.selectedFilter === 'AllEmployee'
-        ? 'employeesList'
-        : this.state.selectedFilter === 'UpcomingRetirements'
-          ? 'upcomingRetirements'
-          : 'employeesListFilter';
-
-      this.setState({ ...this.state, employees: result.data[dataKey] });
-
-      const upcomingRetirementsQuery = `query {
-        upcomingRetirements {
-          id
-          firstName
-          lastName
-          age
-          dateOfJoining
-          title
-          department
-          employeeType
-          currentStatus
-        }
-      }`;
+        ? 'employeesList' : 'employeesListFilter';
+      const dataKey2 = this.state.selectedFilter === 'AllEmployee'
+      ? 'upcomingRetirements' : 'upcomingRetirementsFilter';
 
       const upcomingRetirementsResponse = await fetch('http://localhost:8000/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: upcomingRetirementsQuery }),
+        body: JSON.stringify({ query : upcomingRetirementsQuery }),
       });
 
       const upcomingRetirementsResult = await upcomingRetirementsResponse.json();
-      const upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements;
+      console.log(upcomingRetirementsResult," is the upcoming retirement ")
+      // const upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements;
 
       // Set the state with both sets of data
       this.setState({
         ...this.state,
-        retirementEmployees: upcomingRetirements,
+        employees: result.data[dataKey] ,
+        retirementEmployees: upcomingRetirementsResult.data[dataKey2],
       });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
-
 
 
   handleFilterChange = (selectedFilter) => {

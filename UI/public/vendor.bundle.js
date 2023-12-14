@@ -8576,6 +8576,405 @@ Fade.defaultProps = defaultProps;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/es/Form.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/Form.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types-extra/lib/elementType */ "./node_modules/prop-types-extra/lib/elementType.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+
+
+
+
+
+
+
+
+var propTypes = {
+  horizontal: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+  inline: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+  componentClass: (prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default())
+};
+var defaultProps = {
+  horizontal: false,
+  inline: false,
+  componentClass: 'form'
+};
+
+var Form =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Form, _React$Component);
+
+  function Form() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Form.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        horizontal = _this$props.horizontal,
+        inline = _this$props.inline,
+        Component = _this$props.componentClass,
+        className = _this$props.className,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["horizontal", "inline", "componentClass", "className"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var classes = [];
+
+    if (horizontal) {
+      classes.push((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.prefix)(bsProps, 'horizontal'));
+    }
+
+    if (inline) {
+      classes.push((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.prefix)(bsProps, 'inline'));
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_4__.createElement(Component, (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, elementProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+  };
+
+  return Form;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+Form.propTypes = propTypes;
+Form.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.bsClass)('form', Form));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/es/FormControl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/FormControl.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types-extra/lib/elementType */ "./node_modules/prop-types-extra/lib/elementType.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! warning */ "./node_modules/warning/browser.js");
+/* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _FormControlFeedback__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./FormControlFeedback */ "./node_modules/react-bootstrap/es/FormControlFeedback.js");
+/* harmony import */ var _FormControlStatic__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./FormControlStatic */ "./node_modules/react-bootstrap/es/FormControlStatic.js");
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+/* harmony import */ var _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/StyleConfig */ "./node_modules/react-bootstrap/es/utils/StyleConfig.js");
+
+
+
+
+
+
+
+
+
+
+
+
+var propTypes = {
+  componentClass: (prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default()),
+
+  /**
+   * Only relevant if `componentClass` is `'input'`.
+   */
+  type: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().string),
+
+  /**
+   * Uses `controlId` from `<FormGroup>` if not explicitly specified.
+   */
+  id: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().string),
+
+  /**
+   * Attaches a ref to the `<input>` element. Only functions can be used here.
+   *
+   * ```js
+   * <FormControl inputRef={ref => { this.input = ref; }} />
+   * ```
+   */
+  inputRef: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func)
+};
+var defaultProps = {
+  componentClass: 'input'
+};
+var contextTypes = {
+  $bs_formGroup: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object)
+};
+
+var FormControl =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(FormControl, _React$Component);
+
+  function FormControl() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = FormControl.prototype;
+
+  _proto.render = function render() {
+    var formGroup = this.context.$bs_formGroup;
+    var controlId = formGroup && formGroup.controlId;
+
+    var _this$props = this.props,
+        Component = _this$props.componentClass,
+        type = _this$props.type,
+        _this$props$id = _this$props.id,
+        id = _this$props$id === void 0 ? controlId : _this$props$id,
+        inputRef = _this$props.inputRef,
+        className = _this$props.className,
+        bsSize = _this$props.bsSize,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["componentClass", "type", "id", "inputRef", "className", "bsSize"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_8__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+     true ? warning__WEBPACK_IMPORTED_MODULE_6___default()(controlId == null || id === controlId, '`controlId` is ignored on `<FormControl>` when `id` is specified.') : 0; // input[type="file"] should not have .form-control.
+
+    var classes;
+
+    if (type !== 'file') {
+      classes = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_8__.getClassSet)(bsProps);
+    } // If user provides a size, make sure to append it to classes as input-
+    // e.g. if bsSize is small, it will append input-sm
+
+
+    if (bsSize) {
+      var size = _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__.SIZE_MAP[bsSize] || bsSize;
+      classes[(0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_8__.prefix)({
+        bsClass: 'input'
+      }, size)] = true;
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_4__.createElement(Component, (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, elementProps, {
+      type: type,
+      id: id,
+      ref: inputRef,
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+  };
+
+  return FormControl;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+FormControl.propTypes = propTypes;
+FormControl.defaultProps = defaultProps;
+FormControl.contextTypes = contextTypes;
+FormControl.Feedback = _FormControlFeedback__WEBPACK_IMPORTED_MODULE_10__["default"];
+FormControl.Static = _FormControlStatic__WEBPACK_IMPORTED_MODULE_11__["default"];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_8__.bsClass)('form-control', (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_8__.bsSizes)([_utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__.Size.SMALL, _utils_StyleConfig__WEBPACK_IMPORTED_MODULE_9__.Size.LARGE], FormControl)));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/es/FormControlFeedback.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/FormControlFeedback.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Glyphicon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Glyphicon */ "./node_modules/react-bootstrap/es/Glyphicon.js");
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+
+
+
+
+
+
+
+
+var defaultProps = {
+  bsRole: 'feedback'
+};
+var contextTypes = {
+  $bs_formGroup: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().object)
+};
+
+var FormControlFeedback =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(FormControlFeedback, _React$Component);
+
+  function FormControlFeedback() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = FormControlFeedback.prototype;
+
+  _proto.getGlyph = function getGlyph(validationState) {
+    switch (validationState) {
+      case 'success':
+        return 'ok';
+
+      case 'warning':
+        return 'warning-sign';
+
+      case 'error':
+        return 'remove';
+
+      default:
+        return null;
+    }
+  };
+
+  _proto.renderDefaultFeedback = function renderDefaultFeedback(formGroup, className, classes, elementProps) {
+    var glyph = this.getGlyph(formGroup && formGroup.validationState);
+
+    if (!glyph) {
+      return null;
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_4__.createElement(_Glyphicon__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, elementProps, {
+      glyph: glyph,
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        className = _this$props.className,
+        children = _this$props.children,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(_this$props, ["className", "children"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var classes = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.getClassSet)(bsProps);
+
+    if (!children) {
+      return this.renderDefaultFeedback(this.context.$bs_formGroup, className, classes, elementProps);
+    }
+
+    var child = react__WEBPACK_IMPORTED_MODULE_4__.Children.only(children);
+    return react__WEBPACK_IMPORTED_MODULE_4__.cloneElement(child, (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, elementProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(child.props.className, className, classes)
+    }));
+  };
+
+  return FormControlFeedback;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+FormControlFeedback.defaultProps = defaultProps;
+FormControlFeedback.contextTypes = contextTypes;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_7__.bsClass)('form-control-feedback', FormControlFeedback));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/es/FormControlStatic.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-bootstrap/es/FormControlStatic.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types-extra/lib/elementType */ "./node_modules/prop-types-extra/lib/elementType.js");
+/* harmony import */ var prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/bootstrapUtils */ "./node_modules/react-bootstrap/es/utils/bootstrapUtils.js");
+
+
+
+
+
+
+
+var propTypes = {
+  componentClass: (prop_types_extra_lib_elementType__WEBPACK_IMPORTED_MODULE_5___default())
+};
+var defaultProps = {
+  componentClass: 'p'
+};
+
+var FormControlStatic =
+/*#__PURE__*/
+function (_React$Component) {
+  (0,_babel_runtime_corejs2_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(FormControlStatic, _React$Component);
+
+  function FormControlStatic() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = FormControlStatic.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.componentClass,
+        className = _this$props.className,
+        props = (0,_babel_runtime_corejs2_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["componentClass", "className"]);
+
+    var _splitBsProps = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.splitBsProps)(props),
+        bsProps = _splitBsProps[0],
+        elementProps = _splitBsProps[1];
+
+    var classes = (0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.getClassSet)(bsProps);
+    return react__WEBPACK_IMPORTED_MODULE_4__.createElement(Component, (0,_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, elementProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classes)
+    }));
+  };
+
+  return FormControlStatic;
+}(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+FormControlStatic.propTypes = propTypes;
+FormControlStatic.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_bootstrapUtils__WEBPACK_IMPORTED_MODULE_6__.bsClass)('form-control-static', FormControlStatic));
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/es/Glyphicon.js":
 /*!******************************************************!*\
   !*** ./node_modules/react-bootstrap/es/Glyphicon.js ***!

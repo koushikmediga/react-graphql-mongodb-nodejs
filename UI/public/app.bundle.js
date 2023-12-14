@@ -212,7 +212,12 @@ var EmployeeCreate = /*#__PURE__*/function (_React$Component) {
         marginTop: '-15px',
         fontSize: '1rem'
       };
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        style: {
+          display: 'flex',
+          justifyContent: 'space-around'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         style: headingStyle
       }, "Add Employee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         style: formStyle,
@@ -405,17 +410,17 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
     key: "loadData",
     value: function () {
       var _loadData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var query, response, result, dataKey, upcomingRetirementsQuery, upcomingRetirementsResponse, upcomingRetirementsResult, upcomingRetirements;
+        var employeeListQuery, upcomingRetirementsQuery, response, result, dataKey, dataKey2, upcomingRetirementsResponse, upcomingRetirementsResult;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
               if (this.state.selectedFilter === 'AllEmployee') {
-                query = "query {\n          employeesList {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }";
-              } else if (this.state.selectedFilter === 'UpcomingRetirements') {
-                query = "query {\n          upcomingRetirements {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }";
+                employeeListQuery = " {\n          employeesList {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }";
+                upcomingRetirementsQuery = " {\n          upcomingRetirements {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }";
               } else {
-                query = "query {\n          employeesListFilter(filter: { employeeType: \"".concat(this.state.selectedFilter, "\" }) {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }");
+                employeeListQuery = " {\n          employeesListFilter(filter: { employeeType: \"".concat(this.state.selectedFilter, "\" }) {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }");
+                upcomingRetirementsQuery = " {\n          upcomingRetirementsFilter(filter: { employeeType: \"".concat(this.state.selectedFilter, "\" }) {\n            id\n            firstName\n            lastName\n            age\n            dateOfJoining\n            title\n            department\n            employeeType\n            currentStatus\n          }\n        }");
               }
               _context.next = 4;
               return fetch('http://localhost:8000/graphql', {
@@ -424,7 +429,7 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                  query: query
+                  query: employeeListQuery
                 })
               });
             case 4:
@@ -433,11 +438,9 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
               return response.json();
             case 7:
               result = _context.sent;
-              dataKey = this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : this.state.selectedFilter === 'UpcomingRetirements' ? 'upcomingRetirements' : 'employeesListFilter';
-              this.setState(_objectSpread(_objectSpread({}, this.state), {}, {
-                employees: result.data[dataKey]
-              }));
-              upcomingRetirementsQuery = "query {\n        upcomingRetirements {\n          id\n          firstName\n          lastName\n          age\n          dateOfJoining\n          title\n          department\n          employeeType\n          currentStatus\n        }\n      }";
+              console.log(result, " is complete list");
+              dataKey = this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : 'employeesListFilter';
+              dataKey2 = this.state.selectedFilter === 'AllEmployee' ? 'upcomingRetirements' : 'upcomingRetirementsFilter';
               _context.next = 13;
               return fetch('http://localhost:8000/graphql', {
                 method: 'POST',
@@ -454,9 +457,13 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
               return upcomingRetirementsResponse.json();
             case 16:
               upcomingRetirementsResult = _context.sent;
-              upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements; // Set the state with both sets of data
+              console.log(upcomingRetirementsResult, " is the upcoming retirement ");
+              // const upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements;
+
+              // Set the state with both sets of data
               this.setState(_objectSpread(_objectSpread({}, this.state), {}, {
-                retirementEmployees: upcomingRetirements
+                employees: result.data[dataKey],
+                retirementEmployees: upcomingRetirementsResult.data[dataKey2]
               }));
               _context.next = 24;
               break;
@@ -1040,6 +1047,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ EmployeeSearch)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/FormControl.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/Button.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -1054,6 +1066,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
 
 var EmployeeSearch = /*#__PURE__*/function (_React$Component) {
   _inherits(EmployeeSearch, _React$Component);
@@ -1082,29 +1095,17 @@ var EmployeeSearch = /*#__PURE__*/function (_React$Component) {
         marginTop: '25px',
         marginLeft: '5px'
       };
-      var selectStyle = {
-        width: '20%',
-        padding: '0.7%',
-        marginBottom: '1%',
-        marginRight: '2%',
-        border: '1px solid #d0d3d4',
-        borderRadius: '5px',
-        fontSize: '1rem'
-      };
       var buttonStyle = {
         backgroundColor: '#003b49',
-        color: '#d0d3d4',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '1.2rem'
+        color: '#d0d3d4'
       };
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], {
         style: searchStyle
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        md: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        componentClass: "select",
         name: "title",
-        style: selectStyle,
         value: this.props.selectedFilter,
         onChange: this.handleChange
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
@@ -1122,12 +1123,14 @@ var EmployeeSearch = /*#__PURE__*/function (_React$Component) {
         value: "Seasonal"
       }, "Seasonal Employees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "UpcomingRetirements"
-      }, "Upcoming Retirements")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "Upcoming Retirements")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        md: 2
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        md: 2,
         style: buttonStyle,
-        type: "button",
         value: 'Filter',
         onClick: this.handleFilterClick
-      }));
+      }, "Filter")));
     }
   }]);
   return EmployeeSearch;

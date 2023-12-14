@@ -38,6 +38,7 @@ type Query {
   employee(id: ID!): Employee!
   employeeById(id: ID!): Employee!
   upcomingRetirements(filter: EmployeeFilter): [Employee]
+  upcomingRetirementsFilter(filter: EmployeeFilterInput): [Employee!]!
 }
 
 type Mutation {

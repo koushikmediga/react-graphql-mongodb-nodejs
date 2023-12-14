@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button, Row, Form, FormControl , Col} from 'react-bootstrap';
 export default class EmployeeSearch extends React.Component {
 
   constructor(props) {
@@ -10,7 +10,7 @@ export default class EmployeeSearch extends React.Component {
     this.props.onFilterChange(e.target.value);
   };
 
-  handleFilterClick(){
+  handleFilterClick() {
     this.props.onFilterClick();
   };
 
@@ -19,42 +19,33 @@ export default class EmployeeSearch extends React.Component {
       borderBottom: '1px solid black',
       paddingBottom: '10px',
       marginTop: '25px',
-      marginLeft: '5px',
-    };
-
-    const selectStyle = {
-      width: '20%',
-      padding: '0.7%',
-      marginBottom: '1%',
-      marginRight: '2%',
-      border: '1px solid #d0d3d4',
-      borderRadius: '5px',
-      fontSize: '1rem',
+      marginLeft: '5px'
     };
 
     const buttonStyle = {
       backgroundColor: '#003b49',
-      color: '#d0d3d4',
-      padding: '10px 20px',
-      border: 'none',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      fontSize: '1.2rem',
+      color: '#d0d3d4'
     };
 
     return (
-      <div style={searchStyle}>
-        <select name="title" style={selectStyle} value={this.props.selectedFilter} onChange={this.handleChange}>
-          <option value="" disabled>Select to filter employees</option>
-          <option value="AllEmployee">All Employees</option>
-          <option value="FullTime">FullTime Employees</option>
-          <option value="PartTime">PartTime Employees</option>
-          <option value="Contract">Contract Employees</option>
-          <option value="Seasonal">Seasonal Employees</option>
-          <option value="UpcomingRetirements">Upcoming Retirements</option>
-        </select>
-        <input style={buttonStyle} type="button" value={'Filter'} onClick={this.handleFilterClick} />
-      </div>
+      <Row style={searchStyle}>
+        <Col md={4}>
+          <Form>
+            <FormControl componentClass="select" name="title" value={this.props.selectedFilter} onChange={this.handleChange}>
+              <option value="" disabled>Select to filter employees</option>
+              <option value="AllEmployee">All Employees</option>
+              <option value="FullTime">FullTime Employees</option>
+              <option value="PartTime">PartTime Employees</option>
+              <option value="Contract">Contract Employees</option>
+              <option value="Seasonal">Seasonal Employees</option>
+              <option value="UpcomingRetirements">Upcoming Retirements</option>
+            </FormControl>
+          </Form>
+        </Col>
+        <Col md={2}>
+          <Button md={2} style={buttonStyle} value={'Filter'} onClick={this.handleFilterClick} >Filter</Button>
+        </Col>
+      </Row>
     );
   }
 }
