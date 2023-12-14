@@ -4,10 +4,11 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon -w uiserver.js -w .env uiserver.js",
-    "lint": "eslint . --ext js,jsx --ignore-pattern public",
-    "compile": "webpack --mode production",
-    "watch": "webpack --watch"
+    "start": "nodemon node.js",
+    "#compile": "babel JSX --presets @babel/react --out-dir public",
+    "compile": "webpack --mode development",
+    "#watch": "babel JSX --presets @babel/react --out-dir public --watch --verbose",
+    "watch": "webpack -w --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
