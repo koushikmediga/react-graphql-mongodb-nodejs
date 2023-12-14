@@ -1,5 +1,4 @@
 import React from 'react';
-
 import EmployeeSearch from "./EmployeeSearch.jsx";
 import EmployeeTable from "./EmployeeTable.jsx";
 import { Panel, Tabs, Tab } from 'react-bootstrap';
@@ -7,6 +6,7 @@ export default class EmployeeDirectory extends React.Component {
   constructor() {
     super();
     this.state = { employees: [], selectedFilter: 'AllEmployee', retirementEmployees: [] };
+    // we are maintaining two arrays one for all employees and one for retirement employees
   }
 
   componentDidMount() {
@@ -14,6 +14,7 @@ export default class EmployeeDirectory extends React.Component {
   }
 
   async loadData() {
+    // creating two queries along with filter version
     let employeeListQuery;
     let upcomingRetirementsQuery;
     try {
@@ -76,30 +77,27 @@ export default class EmployeeDirectory extends React.Component {
       const response = await fetch('http://localhost:8000/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query : employeeListQuery }),
+        body: JSON.stringify({ query: employeeListQuery }),
       });
-
       const result = await response.json();
-      console.log(result, " is complete list")
+      
       const dataKey = this.state.selectedFilter === 'AllEmployee'
         ? 'employeesList' : 'employeesListFilter';
       const dataKey2 = this.state.selectedFilter === 'AllEmployee'
-      ? 'upcomingRetirements' : 'upcomingRetirementsFilter';
+        ? 'upcomingRetirements' : 'upcomingRetirementsFilter';
 
       const upcomingRetirementsResponse = await fetch('http://localhost:8000/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query : upcomingRetirementsQuery }),
+        body: JSON.stringify({ query: upcomingRetirementsQuery }),
       });
 
       const upcomingRetirementsResult = await upcomingRetirementsResponse.json();
-      console.log(upcomingRetirementsResult," is the upcoming retirement ")
-      // const upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements;
 
       // Set the state with both sets of data
       this.setState({
         ...this.state,
-        employees: result.data[dataKey] ,
+        employees: result.data[dataKey],
         retirementEmployees: upcomingRetirementsResult.data[dataKey2],
       });
     } catch (error) {

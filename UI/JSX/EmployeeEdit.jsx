@@ -16,6 +16,10 @@ const EmployeeEdit = () => {
     employeeType: '',
   });
 
+  const [retirement, setRetirement] = useState();
+
+  const [showToast, setShowToast] = useState(false);
+
   useEffect(() => {
     const currentDate = new Date();
     const remainingYears = 65 - employeeData.age;
@@ -30,16 +34,12 @@ const EmployeeEdit = () => {
       const monthsRemaining = Math.floor((timeDifference % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
       const daysRemaining = Math.floor((timeDifference % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
 
-      const retirementstring = `Years : ${yearsRemaining}, Months: ${monthsRemaining}, Days : ${daysRemaining} left for retirement`;
+      const retirementstring = `${yearsRemaining} Years, ${monthsRemaining} Months,${daysRemaining} Days left for retirement`;
       setRetirement(retirementstring);
-    }else setRetirement('already retired')
+    } else setRetirement('already retired')
 
-    
+
   }, [employeeData])
-
-  const [retirement, setRetirement] = useState();
-
-  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,7 +186,7 @@ const EmployeeEdit = () => {
 
       <h2 style={headingStyle}>Update Employee</h2>
       <form style={formStyle} name="UpdateEmployee" onSubmit={handleSubmit}>
-        <p>{retirement}</p>
+        <h3 style={{color:'#FFDF00'}}>{retirement}</h3>
         <input
           type="text"
           name="firstName"

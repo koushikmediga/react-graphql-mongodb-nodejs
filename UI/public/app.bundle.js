@@ -399,6 +399,7 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
       selectedFilter: 'AllEmployee',
       retirementEmployees: []
     };
+    // we are maintaining two arrays one for all employees and one for retirement employees
     return _this;
   }
   _createClass(EmployeeDirectory, [{
@@ -438,10 +439,9 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
               return response.json();
             case 7:
               result = _context.sent;
-              console.log(result, " is complete list");
               dataKey = this.state.selectedFilter === 'AllEmployee' ? 'employeesList' : 'employeesListFilter';
               dataKey2 = this.state.selectedFilter === 'AllEmployee' ? 'upcomingRetirements' : 'upcomingRetirementsFilter';
-              _context.next = 13;
+              _context.next = 12;
               return fetch('http://localhost:8000/graphql', {
                 method: 'POST',
                 headers: {
@@ -451,31 +451,28 @@ var EmployeeDirectory = /*#__PURE__*/function (_React$Component) {
                   query: upcomingRetirementsQuery
                 })
               });
-            case 13:
+            case 12:
               upcomingRetirementsResponse = _context.sent;
-              _context.next = 16;
+              _context.next = 15;
               return upcomingRetirementsResponse.json();
-            case 16:
+            case 15:
               upcomingRetirementsResult = _context.sent;
-              console.log(upcomingRetirementsResult, " is the upcoming retirement ");
-              // const upcomingRetirements = upcomingRetirementsResult.data.upcomingRetirements;
-
               // Set the state with both sets of data
               this.setState(_objectSpread(_objectSpread({}, this.state), {}, {
                 employees: result.data[dataKey],
                 retirementEmployees: upcomingRetirementsResult.data[dataKey2]
               }));
-              _context.next = 24;
+              _context.next = 22;
               break;
-            case 21:
-              _context.prev = 21;
+            case 19:
+              _context.prev = 19;
               _context.t0 = _context["catch"](0);
               console.error('Error fetching data:', _context.t0);
-            case 24:
+            case 22:
             case "end":
               return _context.stop();
           }
-        }, _callee, this, [[0, 21]]);
+        }, _callee, this, [[0, 19]]);
       }));
       function loadData() {
         return _loadData.apply(this, arguments);
@@ -572,6 +569,14 @@ var EmployeeEdit = function EmployeeEdit() {
     _useState2 = _slicedToArray(_useState, 2),
     employeeData = _useState2[0],
     setEmployeeData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    retirement = _useState4[0],
+    setRetirement = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showToast = _useState6[0],
+    setShowToast = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var currentDate = new Date();
     var remainingYears = 65 - employeeData.age;
@@ -583,18 +588,10 @@ var EmployeeEdit = function EmployeeEdit() {
       var yearsRemaining = Math.floor(timeDifference / (365.25 * 24 * 60 * 60 * 1000));
       var monthsRemaining = Math.floor(timeDifference % (365.25 * 24 * 60 * 60 * 1000) / (30.44 * 24 * 60 * 60 * 1000));
       var daysRemaining = Math.floor(timeDifference % (30.44 * 24 * 60 * 60 * 1000) / (24 * 60 * 60 * 1000));
-      var retirementstring = "Years : ".concat(yearsRemaining, ", Months: ").concat(monthsRemaining, ", Days : ").concat(daysRemaining, " left for retirement");
+      var retirementstring = "".concat(yearsRemaining, " Years, ").concat(monthsRemaining, " Months,").concat(daysRemaining, " Days left for retirement");
       setRetirement(retirementstring);
     } else setRetirement('already retired');
   }, [employeeData]);
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
-    _useState4 = _slicedToArray(_useState3, 2),
-    retirement = _useState4[0],
-    setRetirement = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    showToast = _useState6[0],
-    setShowToast = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -749,7 +746,11 @@ var EmployeeEdit = function EmployeeEdit() {
     style: formStyle,
     name: "UpdateEmployee",
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, retirement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    style: {
+      color: '#FFDF00'
+    }
+  }, retirement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
     name: "firstName",
     placeholder: "First Name",
@@ -1121,9 +1122,7 @@ var EmployeeSearch = /*#__PURE__*/function (_React$Component) {
         value: "Contract"
       }, "Contract Employees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "Seasonal"
-      }, "Seasonal Employees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "UpcomingRetirements"
-      }, "Upcoming Retirements")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Seasonal Employees")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
         md: 2
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
         md: 2,
