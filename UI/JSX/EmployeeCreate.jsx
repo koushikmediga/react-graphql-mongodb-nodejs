@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Form, FormControl } from 'react-bootstrap';
 
 export default class EmployeeCreate extends React.Component {
   constructor() {
@@ -153,56 +153,59 @@ export default class EmployeeCreate extends React.Component {
     }
 
     return (
-      <Row  style={{ display:'flex', justifyContent:'space-around'}}>
-         <h3 style={headingStyle}>Add Employee</h3>
-        <Col >
-          <form style={formStyle} name="AddEmployee" onSubmit={this.handleSubmit}>
+      <Row style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <h3 style={headingStyle}>Add Employee</h3>
+        <Col lg={8}>
+          <Form style={formStyle} name="AddEmployee" onSubmit={this.handleSubmit}>
 
-            <input type="text" name="firstName" placeholder="First Name" style={inputStyle}
+            <FormControl type="text" name="firstName" placeholder="First Name" style={inputStyle}
               value={this.state.firstName} onChange={this.handleChange} />
             {errors.firstName && <p className="errorMsg" style={erroStyle}>{errors.firstName}</p>}
 
-            <input type="text" name="lastName" placeholder="Last Name" style={inputStyle}
+            <FormControl type="text" name="lastName" placeholder="Last Name" style={inputStyle}
               value={this.state.lastName} onChange={this.handleChange} />
             {errors.lastName && <p className="errorMsg" style={erroStyle}>{errors.lastName}</p>}
 
-            <input type="number" name="age" placeholder="Age" style={inputStyle}
+            <FormControl type="number" name="age" placeholder="Age" style={inputStyle}
               value={this.state.age} onChange={this.handleChange} />
             {errors.age && <p className="errorMsg" style={erroStyle}>{errors.age}</p>}
 
-            <input type="date" name="dateOfJoining" placeholder="Date Of Joining" style={inputStyle}
+            <FormControl type="date" name="dateOfJoining" placeholder="Date Of Joining" style={inputStyle}
               value={this.state.dateOfJoining} onChange={this.handleChange} />
             {errors.dateOfJoining && <p className="errorMsg" style={erroStyle}>{errors.dateOfJoining}</p>}
 
-            <select name="title" style={inputStyle} value={this.state.title} onChange={this.handleChange} >
+            <FormControl
+              componentClass="select" name="title" style={inputStyle} value={this.state.title} onChange={this.handleChange} >
               <option value="" disabled >Select Title</option>
               <option value="Employee">Employee</option>
               <option value="VP">VP</option>
               <option value="Manager">Manager</option>
               <option value="Director">Director</option>
-            </select>
+            </FormControl>
             {errors.title && <p className="errorMsg" style={erroStyle}>{errors.title}</p>}
 
-            <select name="department" style={inputStyle} value={this.state.department} onChange={this.handleChange} >
+            <FormControl
+              componentClass="select" name="department" style={inputStyle} value={this.state.department} onChange={this.handleChange} >
               <option value="" disabled >Select Department</option>
               <option value="IT">IT</option>
               <option value="Marketing">Marketing</option>
               <option value="HR">HR</option>
               <option value="Engineering">Engineering</option>
-            </select>
+            </FormControl>
             {errors.department && <p className="errorMsg" style={erroStyle}>{errors.department}</p>}
 
-            <select name="employeeType" style={inputStyle} value={this.state.employeeType} onChange={this.handleChange}>
+            <FormControl
+              componentClass="select" name="employeeType" style={inputStyle} value={this.state.employeeType} onChange={this.handleChange}>
               <option value="" disabled >Select Employee Type</option>
               <option value="FullTime">FullTime</option>
               <option value="PartTime">PartTime</option>
               <option value="Contract">Contract</option>
               <option value="Seasonal">Seasonal</option>
-            </select>
+            </FormControl>
             {errors.employeeType && <p className="errorMsg" style={erroStyle}>{errors.employeeType}</p>}
 
             <Button style={buttonStyle} onClick={this.handleSubmit}>Create</Button>
-          </form>
+          </Form>
         </Col>
       </Row>
     );
