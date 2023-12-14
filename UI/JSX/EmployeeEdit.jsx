@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, Row, Col, Form , FormControl } from 'react-bootstrap';
+import { Button, Row, Col, Form, FormControl } from 'react-bootstrap';
 import Toast from './Toast.jsx';
 
 const EmployeeEdit = () => {
@@ -187,90 +187,96 @@ const EmployeeEdit = () => {
 
         <Col> <h2 style={headingStyle}>Update Employee</h2></Col>
         <Col lg={12}>
-        <form style={formStyle} name="UpdateEmployee" onSubmit={handleSubmit}>
-          <h3 style={{ color: '#FFDF00' }}>{retirement}</h3>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            disabled
-            style={inputStyle}
-            value={employeeData.firstName}
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            disabled
-            style={inputStyle}
-            value={employeeData.lastName}
-            onChange={handleInputChange}
-          />
-          <input
-            type="number"
-            name="age"
-            placeholder="Age"
-            disabled
-            style={inputStyle}
-            value={employeeData.age}
-            onChange={handleInputChange}
-          />
-          <input
-            type="date"
-            name="dateOfJoining"
-            placeholder="Date Of Joining"
-            disabled
-            style={inputStyle}
-            value={employeeData.dateOfJoining}
-            onChange={handleInputChange}
-          />
-          <select
-            name="title"
-            style={inputStyle}
-            value={employeeData.title}
-            onChange={handleInputChange}
-          >
-            <option value="" disabled>
-              Select Title
-            </option>
-            <option value="Employee">Employee</option>
-            <option value="VP">VP</option>
-            <option value="Manager">Manager</option>
-            <option value="Director">Director</option>
-          </select>
-          <select
-            name="department"
-            style={inputStyle}
-            value={employeeData.department}
-            onChange={handleInputChange}
-          >
-            <option value="" disabled>
-              Select Department
-            </option>
-            <option value="IT">IT</option>
-            <option value="Marketing">Marketing</option>
-            <option value="HR">HR</option>
-            <option value="Engineering">Engineering</option>
-          </select>
-          <select
-            name="employeeType"
-            style={inputStyle}
-            value={employeeData.employeeType}
-            onChange={handleInputChange}
-          >
-            <option value="" disabled>
-              Select Employee Type
-            </option>
-            <option value="FullTime">FullTime</option>
-            <option value="PartTime">PartTime</option>
-            <option value="Contract">Contract</option>
-            <option value="Seasonal">Seasonal</option>
-          </select>
-          <Button type="submit" style={buttonStyle}>
-            Update
-          </Button>
-        </form>
+          <Form style={formStyle} name="UpdateEmployee" onSubmit={handleSubmit}>
+            <h3 style={{ color: '#FFDF00' }}>{retirement}</h3>
+            {/* <FormControl componentClass="select" name="title" value={this.props.selectedFilter} onChange={this.handleChange}> */}
+
+            <FormControl
+              componentClass="input"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              disabled
+              style={inputStyle}
+              value={employeeData.firstName}
+              onChange={handleInputChange}
+            />
+            <FormControl
+              componentClass="input"
+              name="lastName"
+              placeholder="Last Name"
+              disabled
+              style={inputStyle}
+              value={employeeData.lastName}
+              onChange={handleInputChange}
+            />
+            <FormControl
+              componentClass="input"
+              name="age"
+              placeholder="Age"
+              disabled
+              style={inputStyle}
+              value={employeeData.age}
+              onChange={handleInputChange}
+            />
+            <FormControl
+              componentClass="input"
+              name="dateOfJoining"
+              placeholder="Date Of Joining"
+              disabled
+              style={inputStyle}
+              value={employeeData.dateOfJoining}
+              onChange={handleInputChange}
+            />
+            <FormControl
+              componentClass="select"
+              name="title"
+              style={inputStyle}
+              value={employeeData.title}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Title
+              </option>
+              <option value="Employee">Employee</option>
+              <option value="VP">VP</option>
+              <option value="Manager">Manager</option>
+              <option value="Director">Director</option>
+            </FormControl>
+            <FormControl
+              componentClass="select"
+              name="department"
+              style={inputStyle}
+              value={employeeData.department}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Department
+              </option>
+              <option value="IT">IT</option>
+              <option value="Marketing">Marketing</option>
+              <option value="HR">HR</option>
+              <option value="Engineering">Engineering</option>
+            </FormControl>
+            <FormControl
+              componentClass="select"
+              name="employeeType"
+              style={inputStyle}
+              value={employeeData.employeeType}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Employee Type
+              </option>
+              <option value="FullTime">FullTime</option>
+              <option value="PartTime">PartTime</option>
+              <option value="Contract">Contract</option>
+              <option value="Seasonal">Seasonal</option>
+            </FormControl>
+            <Button type="submit" style={buttonStyle}>
+              Update
+            </Button>
+          </Form>
         </Col>
       </Row>
     </React.Fragment>
